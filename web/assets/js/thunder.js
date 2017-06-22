@@ -3,194 +3,85 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var answeredQuestions = [];
+var oQuestionAnswered = 0;
 
+var responseCount;
+var wordCA;
+var sentimentDist;
+var sentimentAvg;
 
-var metricList;
-var nodes;
-var edges;
-var sentimentList;
-var selfPerceptionList;
-var sentimentScore;
-var indexValue;
-var keyPeople;
-var selfPerception;
-var wordCloud;
-
-//$(window).on("load", function () {
 $(document).ready(function () {
 
-//on page load, set gauge as 1, wc1
-    var seriesData = [{
-            name: 'Negative',
-            data: [8]
-        }, {
-            name: 'Neutral',
-            data: [1]
-        }, {
-            name: 'Positive',
-            data: [1]
-        }];
-    plotHCGauge([1]);
-    plotHCStackedBar(seriesData);
-    $("#HC_WordCloud").addClass("wc1");
-    var jsonData = [
-        {'word': 'work', 'trigram': 'perform, improve'},
-        {'word': 'help', 'trigram': 'implement, need'},
-        {'word': 'system', 'trigram': 'place, environment'},
-        {'word': 'better', 'trigram': 'help, there'},
-        {'word': 'new', 'trigram': 'idea, innovative'},
-        {'word': 'time', 'trigram': 'quickly, saving'},
-        {'word': 'improve', 'trigram': 'idea, innovative'},
-        {'word': 'need', 'trigram': 'assistance, help'},
-        {'word': 'job', 'trigram': 'culture, workplace'},
-        {'word': 'training', 'trigram': 'new, tools'}
-    ];
-    plotHCTable(jsonData);
+    $(".question").hover(function () {
+        $(this).toggleClass("mdl-shadow--3dp");
+    });
+
+    $("#submit").on("click", function () {
+        if (!($("#submit").attr("disabled"))) {
+            submit();
+        }
+    });
+
+    //setup before functions
+    var typingTimer;                //timer identifier
+    var doneTypingInterval = 1000;  //time in ms, 1 second for example
+    var $input = $('.openTextResponse');
+
+    //on keyup, start the countdown
+    $input.on('keyup', function () {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(doneTyping, doneTypingInterval);
+    });
+
+    //on keydown, clear the countdown 
+    $input.on('keydown', function () {
+        clearTimeout(typingTimer);
+    });
+
+    fetchData(parseInt($("#dropdown_sentiment").find("option:first-child").val()));
 
     $("#dropdown_sentiment").on("change", function () {
         var selectedOption = $("#dropdown_sentiment").parent().find(".mdl-selectfield__box-value").text();
-
-//        var min = 1;
-//        var max = 3;
-//        var random = Math.floor(Math.random() * (max - min + 1)) + min;
-        $("#openTextResponses").empty();
-
-        var dataValue = [1];
-        if (selectedOption === "How is technology helping you in your day-to-day work?") {
-            seriesData = [{
-                    name: 'Negative',
-                    data: [8]
-                }, {
-                    name: 'Neutral',
-                    data: [1]
-                }, {
-                    name: 'Positive',
-                    data: [1]
-                }];
-            dataValue = [1];
-            plotHCGauge(dataValue);
-            $("#openTextResponses").append(81);
-            $("#HC_WordCloud").removeClass("wc2 wc3");
-            $("#HC_WordCloud").addClass("wc1");
-            jsonData = [
-                {'word': 'work', 'trigram': 'perform, improve'},
-                {'word': 'help', 'trigram': 'implement, need'},
-                {'word': 'system', 'trigram': 'place, environment'},
-                {'word': 'better', 'trigram': 'help, there'},
-                {'word': 'new', 'trigram': 'idea, innovative'},
-                {'word': 'time', 'trigram': 'quickly, saving'},
-                {'word': 'improve', 'trigram': 'idea, innovative'},
-                {'word': 'need', 'trigram': 'assistance, help'},
-                {'word': 'job', 'trigram': 'culture, workplace'},
-                {'word': 'training', 'trigram': 'new, tools'}
-            ];
-        } else if (selectedOption === "How do you associate with the core values of the company?") {
-            seriesData = [{
-                    name: 'Negative',
-                    data: [5]
-                }, {
-                    name: 'Neutral',
-                    data: [3]
-                }, {
-                    name: 'Positive',
-                    data: [2]
-                }];
-            $("#HC_WordCloud").removeClass("wc1 wc3");
-            $("#HC_WordCloud").addClass("wc2");
-            jsonData = [
-                {'word': 'work', 'trigram': 'culture, improve'},
-                {'word': 'living', 'trigram': 'values, model'},
-                {'word': 'commitment', 'trigram': 'workplace, environment'},
-                {'word': 'team', 'trigram': 'people, members'},
-                {'word': 'integrity', 'trigram': 'system, seniors'},
-                {'word': 'follow', 'trigram': 'model, role'},
-                {'word': 'role', 'trigram': 'model, play'},
-                {'word': 'speed', 'trigram': 'work, output'},
-                {'word': 'group', 'trigram': 'team, workplace'},
-                {'word': 'manage', 'trigram': 'people, tools'}
-            ];
-            dataValue = [2];
-            plotHCGauge(dataValue);
-            $("#openTextResponses").append(154);
-        } else if (selectedOption === "How well are processes streamlined for efficient working?") {
-            seriesData = [{
-                    name: 'Negative',
-                    data: [2]
-                }, {
-                    name: 'Neutral',
-                    data: [6]
-                }, {
-                    name: 'Positive',
-                    data: [2]
-                }];
-            $("#HC_WordCloud").removeClass("wc1 wc2");
-            $("#HC_WordCloud").addClass("wc3");
-            jsonData = [
-                {'word': 'work', 'trigram': 'place, honestly'},
-                {'word': 'better', 'trigram': 'follow, ethics'},
-                {'word': 'help', 'trigram': 'member, leader'},
-                {'word': 'time', 'trigram': 'money, output'},
-                {'word': 'need', 'trigram': 'commitment, passion'}
-            ];
-            dataValue = [3];
-            plotHCGauge(dataValue);
-            $("#openTextResponses").append(99);
-        }
-        plotHCStackedBar(seriesData);
-        plotHCTable(jsonData);
+        var selectedOptionValue = $('#dropdown_sentiment option').filter(function () {
+            return $(this).html() === selectedOption;
+        }).val();
+        fetchData(selectedOptionValue);
     });
 });
 
-function plotWordCloud(chartId, panelId) {
-    var selectedTheme = $('#dropdown_theme select').find(':selected').attr('value');
-    var selectedRel = 0;
-    if (selectedTheme === "theme1") {
-        selectedRel = 5;
-    } else if (selectedTheme === "theme2") {
-        selectedRel = 6;
-    } else if (selectedTheme === "theme3") {
-        selectedRel = 7;
-    }
-    var cf = crossfilter(wordCloud);
 
-    var wordCloudDim = cf.dimension(function (d) {
-        if (selectedRel !== 0) {
-            if (d.relId === selectedRel) {
-                return d.word;
-            }
-        } else {
-            return d.word;
-        }
-    });
-    var wordCloudGroup = wordCloudDim.group().reduceSum(function (d) {
-        if (selectedRel !== 0) {
-            if (d.relId === selectedRel) {
-                return d.weight;
-            }
-        } else {
-            return d.weight;
-        }
-
-    });
-
-    var wordcloudChart = dc.wordcloudChart("#" + chartId, panelId);
-    wordcloudChart.options({
-        height: 282,
-        width: 573,
-        minY: -10,
-        minX: -50,
-        relativeSize: 20,
-        dimension: wordCloudDim,
-        group: wordCloudGroup,
-        valueAccessor: function (d) {
-            return d.value;
+function fetchData(optionValue) {
+    var jsonObj = {
+        "quesId": optionValue
+    };
+    var postData = {'jsonObj': JSON.stringify(jsonObj)};
+    jQuery.ajax({
+        type: "POST",
+        url: "fetchData.jsp",
+        data: postData,
+        async: false,
+        success: function (resp) {
+            var response = JSON.parse(resp);
+            responseCount = JSON.parse(response.responseCount);
+            wordCA = JSON.parse(response.wordCA);
+            sentimentDist = JSON.parse(response.sentimentDist);
+            sentimentAvg = JSON.parse(response.sentimentAvg);
+            updateResponseCount();
+            plotHCGauge([sentimentAvg.average]);
+            plotHCStackedBar(sentimentDist);
+            plotWordCloud("HC_WordCloud");
+            plotHCTable(wordCA.slice(0, 10));
         },
-        title: function (d) {
-            return [d.key, 'Word Count: ' + d.value].join('\n');
+        error: function (resp, err) {
+            console.log("unable to fetch data error messsage : " + err);
         }
     });
+}
 
-    wordcloudChart.render();
+function updateResponseCount() {
+    $("#openTextResponses").empty();
+    $("#openTextResponses").append(responseCount[0].responseCount);
 }
 
 function plotHCGauge(dataValue) {
@@ -341,22 +232,18 @@ function plotHCTable(jsonData) {
     for (var i = 0; i < length; i++) {
         var clone = $('#template').clone(true).attr('class', 'hiddenRow');
         clone.find('.word').html(jsonData[i]['word']);
-        clone.find('.trigram').html(jsonData[i]['trigram']);
+        clone.find('.association').html(jsonData[i]['association']);
         clone.appendTo('table');
     }
 }
 
-function plotWordCloud2(chartId) {
+function plotWordCloud(chartId) {
     var list = [];
-    for (var key in wordCloud) {
-        var val = wordCloud[key];
-        console.log(val);
-        var array = [val.word, val.weight];
-//        array.push[val.word];
-//        array.push[val.weight];
+    for (var key in wordCA) {
+        var val = wordCA[key];
+        var array = [val.word, val.frequency];
         list.push(array);
     }
-    console.log(list);
     WordCloud(document.getElementById(chartId), {
         list: list,
         fontFamily: 'Roboto',
@@ -370,9 +257,88 @@ function plotWordCloud2(chartId) {
         drawOutOfBound: false,
         wait: 25,
         shuffle: false,
-        color: function (word, weight) {
-            return (weight > 10) ? '#00ff00' : '#c09292';
+        color: function (word, frequency) {
+            return (frequency > 10) ? '#00ff00' : '#c09292';
         }
 
+    });
+}
+
+
+function submit() {
+    var responseArr = [];
+
+    // OPENTEXT response
+    $(".openTextResponse").each(function () {
+        if ($(this)[0].value !== "") {
+            var id = $(this)[0].id.split("-");
+            var value = $(this)[0].value;
+            var jsonObj = {
+                "questionId": id[1],
+                "responseString": value
+            };
+            responseArr.push(jsonObj);
+        }
+    });
+    singleSubmitData(responseArr);
+}
+
+function singleSubmitData(responseArr) {
+    console.log("entering singleSubmitData");
+    console.log("singleSubmitData analyzing single_submit_rating");
+    var postData = {'emp_rating': JSON.stringify(responseArr)};
+    console.log("singleSubmitData postData : " + postData);
+    $.ajax({
+        type: "POST",
+        url: "survey-submit.jsp",
+        data: postData,
+        async: false,
+        success: function (resp) {
+            console.log("singleSubmitData inside ajax success ");
+            window.location.href = 'thankyou.jsp';
+        },
+        error: function (resp, err) {
+            console.log("singleSubmitData error message : " + err);
+        }
+    });
+    console.log("exiting singleSubmitData");
+}
+
+function submitEnableDisable() {
+    var qListSize = $('#qListSize').val();
+    if (answeredQuestions.length.toString() === qListSize) {
+        $('#submit').addClass('mdl-color--indigo-500 mdl-color-text--white');
+        $('#submit').prop("disabled", false); // Element(s) are now enabled.
+
+    } else if (answeredQuestions.length.toString() !== qListSize) {
+        $('#submit').removeClass('mdl-color--indigo-500 mdl-color-text--white');
+        $('#submit').prop("disabled", true);
+    }
+}
+
+//user is "finished typing," do something
+function doneTyping() {
+    //do something
+    $('.openTextResponse').each(function () {
+        var id = $(this).attr("id");
+        var qId = id.split("-")[1];
+        var value = $(this).val();
+        if ((value.length > 0) && ((answeredQuestions.length === 0) || (answeredQuestions.length > 0 && !answeredQuestions.includes(qId)))) {
+            answeredQuestions.push(qId);
+            oQuestionAnswered++;
+            $(this).parent().parent().addClass("answered");
+            if (oQuestionAnswered === parseInt($("#oQListSize").val())) {
+                $(".sectionOpenText").addClass("completed");
+            }
+            submitEnableDisable();
+        } else if (value.length === 0 && answeredQuestions.includes(qId)) {
+            answeredQuestions.pop(qId);
+            oQuestionAnswered--;
+            $(this).parent().parent().removeClass("answered");
+            if (oQuestionAnswered !== parseInt($("#oQListSize").val())) {
+                $(".sectionOpenText").removeClass("completed");
+            }
+            submitEnableDisable();
+        }
     });
 }

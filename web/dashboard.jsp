@@ -4,6 +4,8 @@
     Author     : adoshi
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="org.owen.survey.Question"%>
 <%--<%@page import="java.lang.String"%>
 <%@page import="java.lang.Integer"%>
 <%@page import="java.util.Map"%>
@@ -54,7 +56,7 @@
     </head>
     <body>
         <div class="mdl-layout mdl-js-layout">
-            <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--indigo-500">
+            <header class="mdl-layout__header mdl-layout__header--scroll">
                 <div class="mdl-layout__header-row">
                     <!-- Title -->
                     <a id="switchUser">
@@ -67,7 +69,7 @@
                     <!-- Navigation -->
                     <!--<div class="android-navigation-container">-->
                     <nav class="mdl-navigation">
-<!--                        <a class="mdl-navigation__link" href="#relationship">Relationship</a>-->
+                        <!--                        <a class="mdl-navigation__link" href="#relationship">Relationship</a>-->
                         <a class="mdl-navigation__link" href="dashboard.jsp">Dashboard</a>
                         <!--<a class="mdl-navigation__link" href="#selfPerception">Engagement</a>-->
                         <!--<a class="mdl-navigation__link" href="explore.jsp">Explore</a>-->
@@ -100,10 +102,19 @@
                             <div class="mdl-grid sectionGridLayoutWidth">
                                 <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                                     <div class="mdl-selectfield mdl-js-selectfield  mdl-selectfield--floating-label" id="dropdown_sentimentContainer">
+
                                         <select id="dropdown_sentiment" name="sentiment" class="mdl-selectfield__select" required>
-                                            <option value="1">How is technology helping you in your day-to-day work?</option>
-                                            <option value="2">How do you associate with the core values of the company?</option>
-                                            <option value="3">How well are processes streamlined for efficient working?</option>
+                                            <%
+                                                Question qObj = new Question();
+                                                List<Question> qList = qObj.getQuestionList();
+                                                for (int i = 0; i < qList.size(); i++) {
+                                                    Question q = qList.get(i);
+
+                                            %>   
+                                            <option value=<%=q.getQuestionId()%>><%=q.getQuestionText()%></option>
+                                            <%}%>
+                                            <!--                                            <option value="2">How do you associate with the core values of the company?</option>
+                                                                                        <option value="3">How well are processes streamlined for efficient working?</option>-->
                                         </select>
                                         <label class="mdl-selectfield__label" for="sentiment">Question</label>
                                         <span class="mdl-selectfield__error">Please select a theme</span>
@@ -111,7 +122,7 @@
                                 </div>
                                 <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--2-col-phone mdl-card">
                                     <div class="mdl-card__title">Responses:</div>
-                                    <div class="mdl-card__supporting-text responseCount" id="openTextResponses">81</div>    
+                                    <div class="mdl-card__supporting-text responseCount" id="openTextResponses"></div>    
                                     <!--<div class="responseCount" id="openTextResponses">81</div></div>-->
                                 </div>
                                 <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card">
@@ -139,7 +150,7 @@
                                             <tbody>
                                                 <tr id="template">
                                                     <td class="mdl-data-table__cell--non-numeric word"></td>
-                                                    <td class="mdl-data-table__cell--non-numeric trigram"></td>
+                                                    <td class="mdl-data-table__cell--non-numeric association"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -152,6 +163,7 @@
         </div>
         <script src="assets/js/material.min.js"></script>
         <script src="assets/js/mdl-selectfield.min.js"></script>
+        <script src="assets/js/wordcloud2.js"></script>
         <!--<script src="assets/js/hr/index/stickyfill.min.js"></script>-->
         <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
         <!--<script src="assets/js/employee/employee.js"></script>-->
