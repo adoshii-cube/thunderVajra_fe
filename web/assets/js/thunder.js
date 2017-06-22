@@ -39,19 +39,30 @@ $(document).ready(function () {
         clearTimeout(typingTimer);
     });
 
-    fetchData(parseInt($("#dropdown_sentiment").find("option:first-child").val()));
+    fetchData(true);
 
     $("#dropdown_sentiment").on("change", function () {
-        var selectedOption = $("#dropdown_sentiment").parent().find(".mdl-selectfield__box-value").text();
-        var selectedOptionValue = $('#dropdown_sentiment option').filter(function () {
-            return $(this).html() === selectedOption;
-        }).val();
-        fetchData(selectedOptionValue);
+        fetchData(false);
     });
+    
+    setInterval(function () {
+        fetchData(false);
+    }, 30000);
 });
 
 
-function fetchData(optionValue) {
+function fetchData(isFirstTime) {
+    var optionValue;
+    if (isFirstTime) {
+        optionValue = parseInt($("#dropdown_sentiment").find("option:first-child").val());
+    } else {
+        var selectedOption = $("#dropdown_sentiment").parent().find(".mdl-selectfield__box-value").text();
+        optionValue = $('#dropdown_sentiment option').filter(function () {
+            return $(this).html() === selectedOption;
+        }).val();
+    }
+
+
     var jsonObj = {
         "quesId": optionValue
     };
