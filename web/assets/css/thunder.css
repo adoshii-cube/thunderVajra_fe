@@ -1228,3 +1228,10 @@ textarea {
     justify-content: center;
     align-items: center;
 }
+
+.mdl-navigation__link{
+    cursor: pointer;
+}
+.mdl-navigation__link.disabled{
+    cursor: no-drop !important;
+}

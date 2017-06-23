@@ -47,9 +47,11 @@ $(document).ready(function () {
 
     $("#showResults").on("click", function () {
         fetchData(false);
-        $(this).prop("disabled", true);
+        $(this).addClass("disabled");
+//        $(this).prop("disabled", true);
         setTimeout(function () {
-            $(this).prop("disabled", false);
+//            $(this).prop("disabled", false);
+            $(this).removeClass("disabled");
         }, 30000);
     });
 //    setInterval(function () {
