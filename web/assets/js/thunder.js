@@ -39,7 +39,10 @@ $(document).ready(function () {
         clearTimeout(typingTimer);
     });
 
-    fetchData(true);
+    if ($("#showResults").length > 0) {
+        fetchData(true);
+    }
+//    fetchData(true);
 
     $("#dropdown_sentiment").on("change", function () {
         var selectedOption = $("#dropdown_sentiment").parent().find(".mdl-selectfield__box-value").text();
@@ -61,6 +64,11 @@ $(document).ready(function () {
 //    setInterval(function () {
 //        fetchData(false);
 //    }, 30000);
+    $(".openTextResponse").each(function () {
+        $(this).val('');
+    });
+
+
 });
 
 
@@ -196,10 +204,10 @@ function plotHCStackedBar(seriesData) {
     Highcharts.chart('HC_StackedBar', {
         chart: {
             type: 'bar',
-            height: 160,
+            height: 130,
             width: 300
         },
-        colors: ['#DD2C00', '#FFD600', '#64DD17'],
+//        colors: ['#DD2C00', '#FFD600', '#64DD17'],
         credits: {
             enabled: false
         },
@@ -225,6 +233,7 @@ function plotHCStackedBar(seriesData) {
             }
         },
         legend: {
+            enabled: false,
             reversed: true,
             layout: 'horizontal',
             align: 'center',
@@ -238,7 +247,13 @@ function plotHCStackedBar(seriesData) {
         },
         plotOptions: {
             series: {
-                stacking: 'percent'
+                stacking: 'percent',
+                colorByPoint: true,
+                dataLabels: {
+                    enabled: false,
+                    crop: false,
+                    overflow: 'none'
+                }
             }
         },
         series: seriesData
@@ -273,12 +288,12 @@ function plotWordCloud(chartId, words) {
 //        shape: 'pentagon',
         gridSize: 5,
 //        minSize: 1,
-//        weightFactor: 8,
+        weightFactor: 10,
         clearCanvas: true,
         drawOutOfBound: false,
         wait: 15,
         shuffle: false,
-        color: '#303f9f'
+        color: '#9e9e9e'
 //        color: function (word, frequency) {
 //            return (frequency > 10) ? '#64DD17' : '#DD2C00';
 //        }
@@ -347,7 +362,7 @@ function doneTyping() {
         var id = $(this).attr("id");
         var qId = id.split("-")[1];
         var value = $(this).val();
-        if ((value.length > 0) && ((answeredQuestions.length === 0) || (answeredQuestions.length > 0 && !answeredQuestions.includes(qId)))) {
+        if ((value.length > 0) && ((answeredQuestions.length === 0) || (answeredQuestions.length > 0 && answeredQuestions.indexOf(qId) < 0))) {
             answeredQuestions.push(qId);
             oQuestionAnswered++;
             $(this).parent().parent().addClass("answered");
@@ -355,7 +370,7 @@ function doneTyping() {
                 $(".sectionOpenText").addClass("completed");
             }
             submitEnableDisable();
-        } else if (value.length === 0 && answeredQuestions.includes(qId)) {
+        } else if (value.length === 0 && answeredQuestions.indexOf(qId) > -1) {
             answeredQuestions.pop(qId);
             oQuestionAnswered--;
             $(this).parent().parent().removeClass("answered");

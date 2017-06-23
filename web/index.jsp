@@ -139,7 +139,14 @@ Author     : adoshi
                             <!--                                                <div class="helpText">
                                                                                 <h5>Some help text here</h5>
                                                                             </div>-->
+
                             <div class="mdl-textfield mdl-js-textfield openTextField">
+                                <%if (q.getQuestionId() == 1) {%>
+                                <div class="instructionText">I am <b>excited</b> about...</div>
+
+                                <%} else {%>
+                                <div class="instructionText">I am <b>concerned</b> about...</div>
+                                <%}%>
                                 <textarea class="mdl-textfield__input openTextResponse" type="text" rows="4" maxrows="6" id="openText-<%=q.getQuestionId()%>" ></textarea>
                                 <label class="mdl-textfield__label" for="openText"><i>Note: Your responses are <b>confidential</b></i></label>
 

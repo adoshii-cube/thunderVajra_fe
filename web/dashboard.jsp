@@ -176,12 +176,13 @@
                     </div>
                 </div>
             </main>
-            <script src="assets/js/material.min.js"></script>
-            <script src="assets/js/mdl-selectfield.min.js"></script>
-            <script src="assets/js/wordcloud2.js"></script>
-            <!--<script src="assets/js/hr/index/stickyfill.min.js"></script>-->
-            <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
-            <!--<script src="assets/js/employee/employee.js"></script>-->
-            <script src="assets/js/thunder.js"></script>
+        </div>
+        <script src="assets/js/material.min.js"></script>
+        <script src="assets/js/mdl-selectfield.min.js"></script>
+        <script src="assets/js/wordcloud2.js"></script>
+        <!--<script src="assets/js/hr/index/stickyfill.min.js"></script>-->
+        <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+        <!--<script src="assets/js/employee/employee.js"></script>-->
+        <script src="assets/js/thunder.js"></script>
     </body>
 </html>
