@@ -31,7 +31,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
         <link href="assets/css/thunder.css" rel="stylesheet" type="text/css">      
-
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
         <!--<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>-->
         <!--<link href="assets/css/styles.css" rel="stylesheet" type="text/css">-->
 
@@ -100,7 +100,7 @@
                         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card">
                             <div class="mdl-card__title font2x">Open Text Feedback</div>
                             <div class="mdl-grid sectionGridLayoutWidth">
-                                <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                                <div class="mdl-cell mdl-cell--9-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                                     <div class="mdl-selectfield mdl-js-selectfield  mdl-selectfield--floating-label" id="dropdown_sentimentContainer">
 
                                         <select id="dropdown_sentiment" name="sentiment" class="mdl-selectfield__select" required>
@@ -119,6 +119,11 @@
                                         <label class="mdl-selectfield__label" for="sentiment">Question</label>
                                         <span class="mdl-selectfield__error">Please select a theme</span>
                                     </div>
+                                </div>
+                                <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--2-col-phone buttonContainer">
+                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="showResults">
+                                        Show Results
+                                    </button>
                                 </div>
                                 <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--2-col-phone mdl-card">
                                     <div class="mdl-card__title">Responses:</div>

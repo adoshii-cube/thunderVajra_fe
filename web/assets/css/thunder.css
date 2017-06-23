@@ -509,6 +509,7 @@ textarea{
 
 .android-card-container .mdl-card__title {
     flex-grow: 0;
+    padding-top: 4px;
 }
 
 .android-card-container .mdl-card__subtitle h5{
@@ -916,8 +917,8 @@ select {
 }
 
 #HC_WordCloud{
-    height: 400px;
-    background-size: cover !important;
+    height: 250px;
+    /*background-size: cover !important;*/
 }
 
 #HC_WordCloud.wc1{
@@ -931,7 +932,7 @@ select {
 }
 
 #HC_Table table{
-    margin-top: 32px;
+    /*margin-top: 32px;*/
     display: block;
 }
 
@@ -948,7 +949,7 @@ select {
     display: block;
     overflow-x: hidden;
     overflow-y: auto;
-    max-height: 270px;
+    max-height: 190px;
 }
 
 #HC_Table table thead tr,
@@ -1059,6 +1060,7 @@ td.mdl-data-table__cell--non-numeric.trigram {
 
 .mdl-card__title.font2x{
     font-size: 24px;
+    padding-bottom: 4px;
 }
 
 #pivotTable{
@@ -1106,4 +1108,67 @@ td.mdl-data-table__cell--non-numeric.trigram {
 
 .openTextTable .mdl-data-table tbody tr:hover {
     background-color: #ffffff;
+}
+
+.buttonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.mdl-card {
+    border-radius: 0px;
+}
+
+.question {
+    /* margin: 0 16px; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    text-align: center;
+    align-items: center;
+    border: 1px solid #f5f5f5;
+    min-height: 320px;
+}
+
+.questionText {
+    margin: 16px;
+    width: 60%;
+}
+
+.openTextField {
+    width: 60%;
+}
+
+.openTextField textarea {
+    border: 1px solid #f5f5f5;
+    background: #fafafa;
+    /* margin-bottom: 5px; */
+}
+
+.openTextField label {
+    font-weight: 400;
+    word-wrap: break-word;
+    white-space: inherit;
+}
+
+textarea {
+    max-height: 120px;
+}
+
+.submit {
+    min-height: 0px;
+    text-align: center;
+}
+
+.answered{
+    -webkit-transition: all 1s; /* Chrome */
+    -moz-transition: all 1s; /* Mozilla */
+    -o-transition: all 1s; /* Opera */
+    transition: all 1s;
+    background-color: #B9F6CA;
+    /*background-color: #C5CAE9;*/
+    /*border: 1px solid #9FA8DA;*/
+    border: 1px solid #00E676;
 }

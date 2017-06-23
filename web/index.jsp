@@ -26,8 +26,9 @@ Author     : adoshi
         <!--<link href="assets/css/materialdesignicons.css" media="all" rel="stylesheet" type="text/css" />-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-        <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
-        <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
+        <!--<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>-->
+        <link href="assets/css/thunder.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -97,53 +98,53 @@ Author     : adoshi
                     <div class="android-card-container mdl-grid">
                         <!--<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card">-->
 
-                            <!--<div class="panelGroup" id="accordion">-->
-                                <%
-                                    Question qObj = new Question();
-                                    List<Question> qList = qObj.getQuestionList();
-                                    if (qList.size() == 0) {
-                                        response.sendRedirect("thankyou.jsp");
-                                    }
-                                %>
-                                <input type="hidden" id="qListSize" value="<% out.print(qList.size());%>" />
+                        <!--<div class="panelGroup" id="accordion">-->
+                        <%
+                            Question qObj = new Question();
+                            List<Question> qList = qObj.getQuestionList();
+                            if (qList.size() == 0) {
+                                response.sendRedirect("thankyou.jsp");
+                            }
+                        %>
+                        <input type="hidden" id="qListSize" value="<% out.print(qList.size());%>" />
 
 
-                                <!--<div class="panel">-->
-<!--                                    <div class="panelHeading">
-                                        <div class="panelTitle sectionOpenText">
-                                            <a data-toggle="collapse" href="#three">
-                                                <div class="sectionImage"></div>
-                                                <div class="section">Section 3</div>
-                                                <div class="questionCounter" id="oQuestionCounter">0/<%=qList.size()%></div>
-                                            </a>
-                                        </div>
-                                    </div>-->
-                                    <!--<div id="three" class="panel-collapse collapse">-->
-                                        <%for (int i = 0; i < qList.size(); i++) {
-                                                Question q = qList.get(i);
-                                        %>
-                                        <!--<div class="mdl-grid">-->
-                                            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card question" id="oQuestion-<%=q.getQuestionId()%>">
-                                                <div class="questionText">
-                                                    <h2><%=q.getQuestionText()%></h2>
-                                                </div>
-                                                <!--                                                <div class="helpText">
-                                                                                                    <h5>Some help text here</h5>
-                                                                                                </div>-->
-                                                <div class="mdl-textfield mdl-js-textfield openTextField">
-                                                    <textarea class="mdl-textfield__input openTextResponse" type="text" rows="3" maxrows="6" id="openText-<%=q.getQuestionId()%>" ></textarea>
-                                                    <label class="mdl-textfield__label" for="openText"><i>Note: Your responses are <b>confidential</b></i></label>
+                        <!--<div class="panel">-->
+                        <!--                                    <div class="panelHeading">
+                                                                <div class="panelTitle sectionOpenText">
+                                                                    <a data-toggle="collapse" href="#three">
+                                                                        <div class="sectionImage"></div>
+                                                                        <div class="section">Section 3</div>
+                                                                        <div class="questionCounter" id="oQuestionCounter">0/<%=qList.size()%></div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>-->
+                        <!--<div id="three" class="panel-collapse collapse">-->
+                        <%for (int i = 0; i < qList.size(); i++) {
+                                Question q = qList.get(i);
+                        %>
+                        <!--<div class="mdl-grid">-->
+                        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card question" id="oQuestion-<%=q.getQuestionId()%>">
+                            <div class="questionText">
+                                <h2><%=q.getQuestionText()%></h2>
+                            </div>
+                            <!--                                                <div class="helpText">
+                                                                                <h5>Some help text here</h5>
+                                                                            </div>-->
+                            <div class="mdl-textfield mdl-js-textfield openTextField">
+                                <textarea class="mdl-textfield__input openTextResponse" type="text" rows="3" maxrows="6" id="openText-<%=q.getQuestionId()%>" ></textarea>
+                                <label class="mdl-textfield__label" for="openText"><i>Note: Your responses are <b>confidential</b></i></label>
 
-                                                </div>
-                                            </div>
+                            </div>
+                        </div>
 
-                                        <!--</div>-->
-                                        <%}%>
-                                    <!--</div>-->
-                                <!--</div>-->
+                        <!--</div>-->
+                        <%}%>
+                        <!--</div>-->
+                        <!--</div>-->
 
-                                <!-- end of panel -->
-                            <!--</div>-->
+                        <!-- end of panel -->
+                        <!--</div>-->
 
                         <!--</div>-->
                     </div>

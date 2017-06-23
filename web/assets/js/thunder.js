@@ -44,7 +44,14 @@ $(document).ready(function () {
     $("#dropdown_sentiment").on("change", function () {
         fetchData(false);
     });
-    
+
+    $("#showResults").on("click", function () {
+        fetchData(false);
+        $(this).prop("disabled", true);
+        setTimeout(function () {
+            $("button").prop("disabled", false);
+        }, 30000);
+    });
 //    setInterval(function () {
 //        fetchData(false);
 //    }, 30000);
@@ -316,14 +323,14 @@ function singleSubmitData(responseArr) {
 }
 
 function submitEnableDisable() {
-//    var qListSize = $('#qListSize').val();
-//    if (answeredQuestions.length.toString() === qListSize) {
-    if (answeredQuestions.length.toString() > 0) {
+    var qListSize = $('#qListSize').val();
+    if (answeredQuestions.length.toString() === qListSize) {
+//    if (answeredQuestions.length.toString() > 0) {
         $('#submit').addClass('mdl-color--indigo-500 mdl-color-text--white');
         $('#submit').prop("disabled", false); // Element(s) are now enabled.
 
-//    } else if (answeredQuestions.length.toString() !== qListSize) {
-    } else if (answeredQuestions.length.toString() < 1) {
+    } else if (answeredQuestions.length.toString() !== qListSize) {
+//    } else if (answeredQuestions.length.toString() < 1) {
         $('#submit').removeClass('mdl-color--indigo-500 mdl-color-text--white');
         $('#submit').prop("disabled", true);
     }
