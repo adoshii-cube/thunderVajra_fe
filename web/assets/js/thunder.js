@@ -52,9 +52,9 @@ $(document).ready(function () {
     $("#showResults").on("click", function () {
         fetchData(false);
         $(this).addClass("disabled");
-//        $(this).prop("disabled", true);
+        $(this).prop("disabled", true);
         setTimeout(function () {
-//            $(this).prop("disabled", false);
+            $(this).prop("disabled", false);
             $(this).removeClass("disabled");
         }, 30000);
     });
@@ -273,7 +273,7 @@ function plotWordCloud(chartId, words) {
 //        shape: 'pentagon',
         gridSize: 5,
 //        minSize: 1,
-        weightFactor: 8,
+//        weightFactor: 8,
         clearCanvas: true,
         drawOutOfBound: false,
         wait: 15,

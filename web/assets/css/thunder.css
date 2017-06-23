@@ -1236,3 +1236,9 @@ textarea {
 .mdl-navigation__link.disabled{
     cursor: no-drop !important;
 }
+
+#showResults{
+    text-transform: none;
+    opacity: .87;
+    font-weight: 400;
+}

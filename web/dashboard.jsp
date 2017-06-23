@@ -76,7 +76,11 @@
                     <!--<div class="android-navigation-container">-->
                     <nav class="mdl-navigation">
                         <!--                        <a class="mdl-navigation__link" href="#relationship">Relationship</a>-->
-                        <a class="mdl-navigation__link" id="showResults">Update Results</a>
+                        <!--<div class="mdl-navigation__link" id="showResults">Update Results</div>-->
+                        <button class="mdl-button mdl-js-button mdl-color-text--white" id="showResults">
+                            Update Results
+                        </button>
+
                         <!--<a class="mdl-navigation__link" href="#selfPerception">Engagement</a>-->
                         <!--<a class="mdl-navigation__link" href="explore.jsp">Explore</a>-->
                     </nav>
