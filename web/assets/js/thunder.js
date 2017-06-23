@@ -25,7 +25,7 @@ $(document).ready(function () {
 
     //setup before functions
     var typingTimer;                //timer identifier
-    var doneTypingInterval = 1000;  //time in ms, 1 second for example
+    var doneTypingInterval = 100;  //time in ms, 1 second for example
     var $input = $('.openTextResponse');
 
     //on keyup, start the countdown
@@ -45,9 +45,9 @@ $(document).ready(function () {
         fetchData(false);
     });
     
-    setInterval(function () {
-        fetchData(false);
-    }, 30000);
+//    setInterval(function () {
+//        fetchData(false);
+//    }, 30000);
 });
 
 
@@ -261,12 +261,12 @@ function plotWordCloud(chartId) {
         backgroundColor: '#ffffff',
         rotateRatio: 0,
 //        shape: 'pentagon',
-//        gridSize: 5,
-        minSize: 8,
-        weightFactor: 5,
-//        clearCanvas: true,
+        gridSize: 5,
+//        minSize: 1,
+        weightFactor: 1,
+        clearCanvas: true,
         drawOutOfBound: false,
-        wait: 25,
+        wait: 15,
         shuffle: false,
         color: function (word, frequency) {
             return (frequency > 10) ? '#00ff00' : '#c09292';
@@ -316,12 +316,14 @@ function singleSubmitData(responseArr) {
 }
 
 function submitEnableDisable() {
-    var qListSize = $('#qListSize').val();
-    if (answeredQuestions.length.toString() === qListSize) {
+//    var qListSize = $('#qListSize').val();
+//    if (answeredQuestions.length.toString() === qListSize) {
+    if (answeredQuestions.length.toString() > 0) {
         $('#submit').addClass('mdl-color--indigo-500 mdl-color-text--white');
         $('#submit').prop("disabled", false); // Element(s) are now enabled.
 
-    } else if (answeredQuestions.length.toString() !== qListSize) {
+//    } else if (answeredQuestions.length.toString() !== qListSize) {
+    } else if (answeredQuestions.length.toString() < 1) {
         $('#submit').removeClass('mdl-color--indigo-500 mdl-color-text--white');
         $('#submit').prop("disabled", true);
     }
