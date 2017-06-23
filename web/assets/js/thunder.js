@@ -42,7 +42,11 @@ $(document).ready(function () {
     fetchData(true);
 
     $("#dropdown_sentiment").on("change", function () {
-        fetchData(false);
+        var selectedOption = $("#dropdown_sentiment").parent().find(".mdl-selectfield__box-value").text();
+        optionValue = $('#dropdown_sentiment option').filter(function () {
+            return $(this).html() === selectedOption;
+        }).val();
+        plotAllCharts(optionValue);
     });
 
     $("#showResults").on("click", function () {
@@ -269,7 +273,7 @@ function plotWordCloud(chartId, words) {
 //        shape: 'pentagon',
         gridSize: 5,
 //        minSize: 1,
-        weightFactor: 1,
+        weightFactor: 8,
         clearCanvas: true,
         drawOutOfBound: false,
         wait: 15,
