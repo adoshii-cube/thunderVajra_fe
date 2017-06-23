@@ -53,12 +53,12 @@ $(document).ready(function () {
     });
 
     $("#showResults").on("click", function () {
-        fetchData(false);
         $(this).addClass("disabled");
         $(this).prop("disabled", true);
+        fetchData(false);
         setTimeout(function () {
-            $(this).prop("disabled", false);
-            $(this).removeClass("disabled");
+            $('#showResults').prop("disabled", false);
+            $('#showResults').removeClass("disabled");
         }, 30000);
     });
 //    setInterval(function () {
