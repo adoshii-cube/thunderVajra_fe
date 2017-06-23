@@ -17,7 +17,7 @@
         <link href="assets/css/material.min.css" rel="stylesheet" type="text/css">
         <!--<link href="assets/css/materialdesignicons.css" media="all" rel="stylesheet" type="text/css" />-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/thunder.css" rel="stylesheet" type="text/css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -35,17 +35,45 @@
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
             <header class="mdl-layout__header mdl-layout__header--waterfall">
                 <div class="mdl-layout__header-row">
-                    <a>
+                    <!-- Title -->
+                    <a id="switchUser">
                         <span class="android-title mdl-layout-title">
-                            <img class="android-logo-image" src="assets/images/OWEN_Logo_white.png" alt="OWEN Logo">
+                            <img class="LT-logo-image" src="assets/images/L&T_Logo.jpg" alt="L&T Logo">
                         </span>
                     </a>
                     <div class="mdl-layout-spacer"></div>
-                    <a>
-                        <span class="android-mobile-title mdl-layout-title" id="switchUserMobile">
-                            <img class="android-logo-image" src="assets/images/OWEN_Logo_white.png" alt="OWEN Logo">
+                    <a id="switchUser">
+                        <span class="android-title mdl-layout-title">
+                            <img class="thunder-logo-image" src="assets/images/Thunder_Logo.jpg" alt="Thunder Logo">
                         </span>
                     </a>
+
+                    <!-- Add spacer, to align navigation to the right -->
+                    <!--<div class="mdl-layout-spacer"></div>-->
+                    <!-- Navigation -->
+                    <!--<div class="android-navigation-container">-->
+                    <!--<nav class="mdl-navigation">-->
+                    <!--<a class="mdl-navigation__link" href="">Link</a>-->
+                    <!--</nav>-->
+                    <!--</div>-->
+                    <!-- Right aligned menu below button -->
+
+<!--                    <button id="switch-role-menu"
+                            class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">account_circle</i>
+                    </button>
+
+                    <button id="header-menu"
+                            class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">more_vert</i>
+                    </button>-->
+
+                    <a>
+                        <span class="android-mobile-title mdl-layout-title" id="switchUserMobile">
+                            <img class="thunder-logo-image" src="assets/images/Thunder_Logo.jpg" alt="L&T Logo">
+                        </span>
+                    </a>
+
                 </div>
             </header>
             <main class="android-content mdl-layout__content">

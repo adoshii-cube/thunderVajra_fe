@@ -49,7 +49,7 @@ $(document).ready(function () {
         fetchData(false);
         $(this).prop("disabled", true);
         setTimeout(function () {
-            $("button").prop("disabled", false);
+            $(this).prop("disabled", false);
         }, 30000);
     });
 //    setInterval(function () {

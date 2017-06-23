@@ -35,12 +35,12 @@ Author     : adoshi
         <link rel='shortcut icon' type='image/x-icon' href='assets/images/OWEN_Favicon.ico'/>
 
         <!-- Chrome, Firefox OS and Opera -->
-        <meta name="theme-color" content="#303f9f">
+        <meta name="theme-color" content="#010101">
         <!-- Windows Phone -->
-        <meta name="msapplication-navbutton-color" content="#303f9f">
+        <meta name="msapplication-navbutton-color" content="#010101">
         <!-- iOS Safari -->
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="#303f9f">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#010101">
     </head>
     <body>
         <!-- Uses a header that scrolls with the text, rather than staying
@@ -51,7 +51,13 @@ Author     : adoshi
                     <!-- Title -->
                     <a id="switchUser">
                         <span class="android-title mdl-layout-title">
-                            <img class="android-logo-image" src="assets/images/OWEN_Logo_white.png" alt="OWEN Logo">
+                            <img class="LT-logo-image" src="assets/images/L&T_Logo.jpg" alt="L&T Logo">
+                        </span>
+                    </a>
+                    <div class="mdl-layout-spacer"></div>
+                    <a id="switchUser">
+                        <span class="android-title mdl-layout-title">
+                            <img class="thunder-logo-image" src="assets/images/Thunder_Logo.jpg" alt="Thunder Logo">
                         </span>
                     </a>
 
@@ -59,10 +65,12 @@ Author     : adoshi
                     <div class="mdl-layout-spacer"></div>
                     <!-- Navigation -->
                     <!--<div class="android-navigation-container">-->
-                    <!--<nav class="mdl-navigation">-->
-                    <!--<a class="mdl-navigation__link" href="">Link</a>-->
-                    <!--</nav>-->
-                    <!--</div>-->
+                    <nav class="mdl-navigation">
+                        <!--                        <a class="mdl-navigation__link" href="#relationship">Relationship</a>-->
+                        <a class="mdl-navigation__link" href="">Survey</a>
+                        <!--<a class="mdl-navigation__link" href="#selfPerception">Engagement</a>-->
+                        <!--<a class="mdl-navigation__link" href="explore.jsp">Explore</a>-->
+                    </nav>
                     <!-- Right aligned menu below button -->
 
                     <button id="switch-role-menu"
@@ -77,7 +85,7 @@ Author     : adoshi
 
                     <a>
                         <span class="android-mobile-title mdl-layout-title" id="switchUserMobile">
-                            <img class="android-logo-image" src="assets/images/OWEN_Logo_white.png" alt="OWEN Logo">
+                            <img class="thunder-logo-image" src="assets/images/Thunder_Logo.jpg" alt="L&T Logo">
                         </span>
                     </a>
 
@@ -132,7 +140,7 @@ Author     : adoshi
                                                                                 <h5>Some help text here</h5>
                                                                             </div>-->
                             <div class="mdl-textfield mdl-js-textfield openTextField">
-                                <textarea class="mdl-textfield__input openTextResponse" type="text" rows="3" maxrows="6" id="openText-<%=q.getQuestionId()%>" ></textarea>
+                                <textarea class="mdl-textfield__input openTextResponse" type="text" rows="4" maxrows="6" id="openText-<%=q.getQuestionId()%>" ></textarea>
                                 <label class="mdl-textfield__label" for="openText"><i>Note: Your responses are <b>confidential</b></i></label>
 
                             </div>

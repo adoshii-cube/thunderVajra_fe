@@ -61,7 +61,13 @@
                     <!-- Title -->
                     <a id="switchUser">
                         <span class="android-title mdl-layout-title">
-                            <img class="android-logo-image" src="assets/images/OWEN_Logo_white.png" alt="OWEN Logo">
+                            <img class="LT-logo-image" src="assets/images/L&T_Logo.jpg" alt="OWEN Logo">
+                        </span>
+                    </a>
+                    <div class="mdl-layout-spacer"></div>
+                    <a id="switchUser">
+                        <span class="android-title mdl-layout-title">
+                            <img class="thunder-logo-image" src="assets/images/Thunder_Logo.jpg" alt="OWEN Logo">
                         </span>
                     </a>
                     <!-- Add spacer, to align navigation to the right -->
@@ -70,7 +76,7 @@
                     <!--<div class="android-navigation-container">-->
                     <nav class="mdl-navigation">
                         <!--                        <a class="mdl-navigation__link" href="#relationship">Relationship</a>-->
-                        <a class="mdl-navigation__link" href="dashboard.jsp">Dashboard</a>
+                        <a class="mdl-navigation__link" id="showResults">Update Results</a>
                         <!--<a class="mdl-navigation__link" href="#selfPerception">Engagement</a>-->
                         <!--<a class="mdl-navigation__link" href="explore.jsp">Explore</a>-->
                     </nav>
@@ -87,7 +93,7 @@
                     <!-- Right aligned menu below button -->
                     <a>
                         <span class="android-mobile-title mdl-layout-title" id="switchUserMobile">
-                            <img class="android-logo-image" src="assets/images/OWEN_Logo_white.png" alt="OWEN Logo">
+                            <img class="android-logo-image" src="assets/images/L&T_Logo.jpg" alt="OWEN Logo">
                         </span>
                     </a>
                 </div>
@@ -100,7 +106,7 @@
                         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card">
                             <div class="mdl-card__title font2x">Open Text Feedback</div>
                             <div class="mdl-grid sectionGridLayoutWidth">
-                                <div class="mdl-cell mdl-cell--9-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                                <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                                     <div class="mdl-selectfield mdl-js-selectfield  mdl-selectfield--floating-label" id="dropdown_sentimentContainer">
 
                                         <select id="dropdown_sentiment" name="sentiment" class="mdl-selectfield__select" required>
@@ -120,11 +126,11 @@
                                         <span class="mdl-selectfield__error">Please select a theme</span>
                                     </div>
                                 </div>
-                                <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--2-col-phone buttonContainer">
+<!--                                <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--2-col-phone buttonContainer">
                                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="showResults">
                                         Show Results
                                     </button>
-                                </div>
+                                </div>-->
                                 <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--2-col-phone mdl-card">
                                     <div class="mdl-card__title">Responses:</div>
                                     <div class="mdl-card__supporting-text responseCount" id="openTextResponses"></div>    
