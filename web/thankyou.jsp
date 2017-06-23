@@ -24,12 +24,12 @@
         <link rel='shortcut icon' type='image/x-icon' href='assets/images/OWEN_Favicon.ico'/>
 
         <!-- Chrome, Firefox OS and Opera -->
-        <meta name="theme-color" content="#303f9f">
+        <meta name="theme-color" content="#010101">
         <!-- Windows Phone -->
-        <meta name="msapplication-navbutton-color" content="#303f9f">
+        <meta name="msapplication-navbutton-color" content="#010101">
         <!-- iOS Safari -->
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="#303f9f">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#010101">
     </head>
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">

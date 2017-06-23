@@ -15,13 +15,10 @@
 <%
     JSONObject result = new JSONObject();
     
-    JSONObject jsonObj = new JSONObject(request.getParameter("jsonObj"));
-    int questionId = jsonObj.getInt("quesId");
-    
     HrDashboardHelper hrHelper = new HrDashboardHelper();
-    String responseCount = hrHelper.getResponseCount(questionId);
-    String wordCA = hrHelper.getWordCloudAssociation(questionId);
-    String[] sentiment = hrHelper.getSentimentDistribution(questionId).split(";");
+    String responseCount = hrHelper.getResponseCount();
+    String wordCA = hrHelper.getWordCloudAssociation();
+    String[] sentiment = hrHelper.getSentimentDistribution().split(";");
     String sentimentDist = sentiment[0];
     String sentimentAvg = sentiment[1];
     result.put("responseCount", responseCount);

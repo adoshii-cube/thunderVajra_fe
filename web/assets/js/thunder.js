@@ -63,7 +63,7 @@ $(document).ready(function () {
 function fetchData(isFirstTime) {
     var optionValue;
     if (isFirstTime) {
-        optionValue = parseInt($("#dropdown_sentiment").find("option:first-child").val());
+        optionValue = $("#dropdown_sentiment").find("option:first-child").val();
     } else {
         var selectedOption = $("#dropdown_sentiment").parent().find(".mdl-selectfield__box-value").text();
         optionValue = $('#dropdown_sentiment option').filter(function () {
@@ -71,15 +71,9 @@ function fetchData(isFirstTime) {
         }).val();
     }
 
-
-    var jsonObj = {
-        "quesId": optionValue
-    };
-    var postData = {'jsonObj': JSON.stringify(jsonObj)};
     jQuery.ajax({
         type: "POST",
         url: "fetchData.jsp",
-        data: postData,
         async: false,
         success: function (resp) {
             var response = JSON.parse(resp);
@@ -87,11 +81,7 @@ function fetchData(isFirstTime) {
             wordCA = JSON.parse(response.wordCA);
             sentimentDist = JSON.parse(response.sentimentDist);
             sentimentAvg = JSON.parse(response.sentimentAvg);
-            updateResponseCount();
-            plotHCGauge([sentimentAvg.average]);
-            plotHCStackedBar(sentimentDist);
-            plotWordCloud("HC_WordCloud");
-            plotHCTable(wordCA.slice(0, 10));
+            plotAllCharts(optionValue);
         },
         error: function (resp, err) {
             console.log("unable to fetch data error messsage : " + err);
@@ -99,9 +89,16 @@ function fetchData(isFirstTime) {
     });
 }
 
-function updateResponseCount() {
+function plotAllCharts(qId) {
+    updateResponseCount(responseCount[qId]);
+    plotHCGauge([sentimentAvg[qId]]);
+    plotHCStackedBar(sentimentDist[parseInt(qId)]);
+    plotWordCloud("HC_WordCloud", wordCA[parseInt(qId)]);
+    plotHCTable(wordCA[parseInt(qId)].slice(0, 10));
+}
+function updateResponseCount(dataValue) {
     $("#openTextResponses").empty();
-    $("#openTextResponses").append(responseCount[0].responseCount);
+    $("#openTextResponses").append(dataValue);
 }
 
 function plotHCGauge(dataValue) {
@@ -257,10 +254,10 @@ function plotHCTable(jsonData) {
     }
 }
 
-function plotWordCloud(chartId) {
+function plotWordCloud(chartId, words) {
     var list = [];
-    for (var key in wordCA) {
-        var val = wordCA[key];
+    for (var key in words) {
+        var val = words[key];
         var array = [val.word, val.frequency];
         list.push(array);
     }
@@ -277,9 +274,10 @@ function plotWordCloud(chartId) {
         drawOutOfBound: false,
         wait: 15,
         shuffle: false,
-        color: function (word, frequency) {
-            return (frequency > 10) ? '#00ff00' : '#c09292';
-        }
+        color: '#303f9f'
+//        color: function (word, frequency) {
+//            return (frequency > 10) ? '#64DD17' : '#DD2C00';
+//        }
 
     });
 }

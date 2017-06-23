@@ -971,7 +971,7 @@ select {
     display: block;
     overflow-x: hidden;
     overflow-y: auto;
-    max-height: 190px;
+    max-height: 140px;
 }
 
 #HC_Table table thead tr,
@@ -1140,6 +1140,7 @@ td.mdl-data-table__cell--non-numeric.trigram {
 
 .mdl-card {
     border-radius: 0px;
+    min-height: 0px;
 }
 
 .question {
