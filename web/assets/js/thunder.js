@@ -106,7 +106,8 @@ function plotAllCharts(qId) {
     plotHCGauge([sentimentAvg[qId]]);
     plotHCStackedBar(sentimentDist[parseInt(qId)]);
     plotWordCloud("HC_WordCloud", wordCA[parseInt(qId)]);
-    plotHCTable(wordCA[parseInt(qId)].slice(0, 10));
+//    plotHCTable(wordCA[parseInt(qId)].slice(0, 10));
+    plotHCTable(wordCA[parseInt(qId)]);
 }
 function updateResponseCount(dataValue) {
     $("#openTextResponses").empty();
@@ -275,11 +276,13 @@ function plotHCTable(jsonData) {
 
 function plotWordCloud(chartId, words) {
     var list = [];
+//    var color;
     for (var key in words) {
         var val = words[key];
-        var array = [val.word, val.frequency];
+        var array = [val.word, val.frequency, val.sentiment];
         list.push(array);
     }
+    console.log(list);
     WordCloud(document.getElementById(chartId), {
         list: list,
         fontFamily: 'Roboto',
@@ -288,16 +291,21 @@ function plotWordCloud(chartId, words) {
 //        shape: 'pentagon',
         gridSize: 5,
 //        minSize: 1,
-        weightFactor: 3,
+        weightFactor: 8,
         clearCanvas: true,
         drawOutOfBound: false,
         wait: 15,
         shuffle: false,
-        color: '#9e9e9e'
-//        color: function (word, frequency) {
-//            return (frequency > 10) ? '#64DD17' : '#DD2C00';
-//        }
-
+//        color: '#9e9e9e'
+        color: function (word, weight, fontSize, distance, theta, sentiment) {
+            if (sentiment === "positive") {
+                return "#64DD17";
+            } else if (sentiment === "neutral"){
+                return "#FFD600";
+            } else if (sentiment === "negative"){
+                return "#DD2C00";
+            }
+        }
     });
 }
 
