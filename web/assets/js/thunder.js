@@ -290,7 +290,7 @@ function plotWordCloud(chartId, words) {
 //        shape: 'pentagon',
         gridSize: 5,
 //        minSize: 1,
-        weightFactor: 8,
+        weightFactor: 7,
         clearCanvas: true,
         drawOutOfBound: false,
         wait: 15,
