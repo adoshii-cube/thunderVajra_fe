@@ -282,7 +282,6 @@ function plotWordCloud(chartId, words) {
         var array = [val.word, val.frequency, val.sentiment];
         list.push(array);
     }
-    console.log(list);
     WordCloud(document.getElementById(chartId), {
         list: list,
         fontFamily: 'Roboto',
