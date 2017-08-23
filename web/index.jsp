@@ -35,12 +35,12 @@ Author     : adoshi
         <link rel='shortcut icon' type='image/x-icon' href='assets/images/OWEN_Favicon.ico'/>
 
         <!-- Chrome, Firefox OS and Opera -->
-        <meta name="theme-color" content="#010101">
+        <meta name="theme-color" content="#303f9f">
         <!-- Windows Phone -->
-        <meta name="msapplication-navbutton-color" content="#010101">
+        <meta name="msapplication-navbutton-color" content="#303f9f">
         <!-- iOS Safari -->
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="#010101">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#303f9f">
     </head>
     <body>
         <!-- Uses a header that scrolls with the text, rather than staying
@@ -51,15 +51,15 @@ Author     : adoshi
                     <!-- Title -->
                     <a id="switchUser">
                         <span class="android-title mdl-layout-title">
-                            <img class="LT-logo-image" src="assets/images/L&T_Logo.jpg" alt="L&T Logo">
+                            <img class="android-logo-image" src="assets/images/OWEN_Logo_white1.png" alt="OWEN Logo">
                         </span>
                     </a>
                     <div class="mdl-layout-spacer"></div>
-                    <a id="switchUser">
+<!--                    <a id="switchUser">
                         <span class="android-title mdl-layout-title">
                             <img class="thunder-logo-image" src="assets/images/Thunder_Logo.jpg" alt="Thunder Logo">
                         </span>
-                    </a>
+                    </a>-->
 
                     <!-- Add spacer, to align navigation to the right -->
                     <div class="mdl-layout-spacer"></div>
@@ -85,7 +85,7 @@ Author     : adoshi
 
                     <a>
                         <span class="android-mobile-title mdl-layout-title" id="switchUserMobile">
-                            <img class="thunder-logo-image" src="assets/images/Thunder_Logo.jpg" alt="L&T Logo">
+                            <img class="android-logo-image" src="assets/images/OWEN_Logo_white1.png" alt="OWEN Logo">
                         </span>
                     </a>
 

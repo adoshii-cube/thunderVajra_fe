@@ -38,15 +38,15 @@
                     <!-- Title -->
                     <a id="switchUser">
                         <span class="android-title mdl-layout-title">
-                            <img class="LT-logo-image" src="assets/images/L&T_Logo.jpg" alt="L&T Logo">
+                            <img class="android-logo-image" src="assets/images/OWEN_Logo_white1.png" alt="OWEN Logo">
                         </span>
                     </a>
                     <div class="mdl-layout-spacer"></div>
-                    <a id="switchUser">
+<!--                    <a id="switchUser">
                         <span class="android-title mdl-layout-title">
                             <img class="thunder-logo-image" src="assets/images/Thunder_Logo.jpg" alt="Thunder Logo">
                         </span>
-                    </a>
+                    </a>-->
 
                     <!-- Add spacer, to align navigation to the right -->
                     <!--<div class="mdl-layout-spacer"></div>-->
@@ -70,7 +70,7 @@
 
                     <a>
                         <span class="android-mobile-title mdl-layout-title" id="switchUserMobile">
-                            <img class="thunder-logo-image" src="assets/images/Thunder_Logo.jpg" alt="L&T Logo">
+                            <img class="android-logo-image" src="assets/images/OWEN_Logo_white1.png" alt="OWEN Logo">
                         </span>
                     </a>
 

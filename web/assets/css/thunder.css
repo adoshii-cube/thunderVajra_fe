@@ -71,6 +71,10 @@ textarea{
     display: none !important;
 }
 
+.android-logo-image {
+    /* height: 28px; */
+    width: 140px;
+}
 
 .LT-logo-image {
     /*height: 28px;*/
@@ -1208,7 +1212,7 @@ textarea {
 }
 
 .mdl-layout__header{
-    background-color: #010101;
+    /*background-color: #010101;*/
 }
 
 .mdl-layout__content {
